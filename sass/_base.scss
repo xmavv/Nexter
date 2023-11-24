@@ -31,3 +31,17 @@ body {
     font-weight: 300;
     line-height: 1.6;
 }
+
+.container {
+    display: grid;
+    // od razu tutaj musimy uzyc jednostek responsywnych
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    //dajemy po lewej i po prawej stronie 1fr zeby one byly wycentrowane
+    //i dajemy to tez po to zeby potem np moc z tego skorzystac i se zrobic na cale
+    //width jakies zdjecie
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    & > * {
+        font-size: 3rem;
+        padding: 4rem;
+    }
+}
