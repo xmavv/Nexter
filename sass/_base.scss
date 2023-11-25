@@ -40,8 +40,4 @@ body {
     //i dajemy to tez po to zeby potem np moc z tego skorzystac i se zrobic na cale
     //width jakies zdjecie
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-    & > * {
-        font-size: 3rem;
-        padding: 4rem;
-    }
 }

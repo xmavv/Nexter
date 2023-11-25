@@ -1,4 +1,38 @@
 .features {
-    background-color: $color-grey-light-2;
     grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 6rem;
+    // to bardzo wazne bo potem jak zostaje white space to posuwa do gory automatycznie
+    align-items: start;
+    // grid-template-rows: auto auto;
+    // nie musimy tego pisac bo to tak bedzie jak nic nie napiszemy, bedzie auto
+    // a auto to jest min-content normalnie nie
+}
+
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        // dajemy tutaj zeby mialo 2 rowy jest to lepsze niz usatlenie wiersza
+        // dla tego textu ponizej, bo jak  ustalimy dla tego icon 2 wiersze to 
+        // on juz nie bedize dawal pierwszemu wierszowy wysokosci icona (bo jest wiekszy niz tekst)
+        // tylko tekst da mu wysokosc, no bo icon bedzie mialo 2 rowy 
+        grid-row: 1 / span 2;
+        translate: 0 -1rem;
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
 }
