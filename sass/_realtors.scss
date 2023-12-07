@@ -9,12 +9,26 @@
     align-content: center;
     grid-row-gap: 2rem;
 
+    @include respond($bp-medium) {
+        grid-column: 1 / -1;
+    }
+
     &__list {
         display: grid;
         grid-template-columns: min-content max-content;
         grid-column-gap: 2rem;
         grid-row-gap: 5vh;
         align-items: center;
+
+        @include respond($bp-medium) {
+            grid-template-columns: repeat(3, min-content max-content);
+
+            // display: flex;
+        }
+
+        @include respond($bp-small) {
+            grid-template-columns: min-content max-content;
+        }
     }
 
     &__img {

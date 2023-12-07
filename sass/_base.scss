@@ -14,6 +14,13 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// RESPOSIVE BREAKPOINTS
+$bp-evenLarger: 106.25em; //1700px
+$bp-largest: 75em; //1200px
+$bp-large: 62.5em; //1000px
+$bp-medium: 50em;  //800px
+$bp-small: 37.5em; //600px
+
 *,
 *::after,
 *::before {
@@ -23,6 +30,14 @@ $font-display: 'Josefin Sans', sans-serif;
 html {
     box-sizing: border-box;
     font-size: 62.5%; //1rem = 10px
+
+    @include respond($bp-largest) {
+        font-size: 50%;
+    }
+
+    @include respondMin($bp-evenLarger) {
+        font-size: 70%;
+    }
 }
 
 body {
@@ -40,4 +55,13 @@ body {
     //i dajemy to tez po to zeby potem np moc z tego skorzystac i se zrobic na cale
     //width jakies zdjecie
     grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    
+    @include respond($bp-large) {
+        grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start]repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    }
+
+    @include respond($bp-medium) {
+        grid-template-rows: 6rem calc(100vh - 6rem); // nie musimy innych deklarowac bo bedzie i tak based on the content, auto, min-content
+    }
 }
