@@ -56,3 +56,24 @@
 .mb-md { margin-bottom: 3rem; }
 .mb-lg { margin-bottom: 4rem; }
 .mb-hg { margin-bottom: 8rem; }
+
+.wide-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: .5);
+    backdrop-filter: blur(1rem);
+    z-index: 9999;
+}
+
+.wide {
+    position: relative;
+    width: 50vw !important;
+    height: auto !important;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 10000;
+}
