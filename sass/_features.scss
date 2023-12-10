@@ -3,18 +3,44 @@
 
     margin: 15rem 0;
 
-    display: grid;
+    // display: grid;
+
     // grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    grid-gap: 6rem;
+
+    // grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    // grid-gap: 6rem;
+
     // to bardzo wazne bo potem jak zostaje white space to posuwa do gory automatycznie
-    align-items: start;
+    // align-items: start;
+
     // grid-template-rows: auto auto;
     // nie musimy tego pisac bo to tak bedzie jak nic nie napiszemy, bedzie auto
     // a auto to jest min-content normalnie nie
+
+    @include respond($bp-medium) {
+        margin: 10rem 0;
+    }
+
+    @supports(display: grid) {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 6rem;
+        align-items: start;
+    }
 }
 
 .feature {
+    float: left;
+    width: 33.33333%;
+    margin-bottom: 6rem;
+
+    @supports(display: grid) {
+        width: auto;
+        margin-bottom: 0;
+
+        //css grid ignoruje float wiec nie musimy resetowac
+    }
+
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-row-gap: 1.5rem;
