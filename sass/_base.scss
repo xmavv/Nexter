@@ -38,6 +38,8 @@ html {
     @include respondMin($bp-evenLarger) {
         font-size: 70%;
     }
+
+    scroll-behavior: smooth;
 }
 
 body {

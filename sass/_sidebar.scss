@@ -2,42 +2,126 @@
     background-color: $color-primary;
     grid-column: sidebar-start / sidebar-end;
     grid-row: 1 / -1;
+    z-index: 500;
+    width: 100%;
+    transition: .3s width ease-in-out;
+    padding-top: 2rem;
+    position: relative;
 
     @include respond($bp-large) {
         grid-column: 1 / -1;
         grid-row: 1 / 2;
         justify-content: flex-end;
         align-items: center;
+        padding: 0;
     }
-
-    display: flex;
-    justify-content: center;
 }
 
-.nav-btn {
+.increaseWidth {
+    width: 400%;
+}
+
+.sidebar-container {
+    display: flex;
+    align-items: start;
+    position: fixed;
+
+    @include respond ($bp-large) {
+        position: relative;
+        align-items: center;
+    }
+}
+
+.burger {
+    background-color: transparent;
     border: none;
-    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    margin-right: 3rem;
+    display: block;
+    position: relative;
 
-    margin-top: 4rem;
-    background-color: #fff;
-    width: 4.5rem;
-    height: 2px;
-
-    @include respond($bp-large) {
-        margin-top: 0;
-        margin-right: 3rem;
-        &::before {translate: 0 -1.2rem;} 
-        &::after {translate: 0 1.2rem;}
+    :first-child {
+        rotate: 30deg;
+        translate: 0 .6rem;
+    }
+    
+    :nth-child(2) {
+        translate: -2rem 0;
+        rotate: 90deg;
+    }
+    
+    :nth-child(3) {
+        rotate: -30deg;
+        translate: 0 -.6rem;
     }
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        background-color: #fff;
+    &__line {
         width: 4.5rem;
         height: 2px;
-    } 
-    &::before {translate: 0 -1.5rem;} 
-    &::after {translate: 0 1.5rem;}
+        background-color: #fff;
+        margin: 1.5rem;
+        border-radius: 0;
+        display: block;
+        transition: .3s ease-in-out;
+    }
+
+    &.active {
+        :first-child {
+            rotate: 135deg;
+            translate: 0 1.7rem;
+        }
+
+        :nth-child(2) {
+            translate: 0 -30rem;
+        }
+        
+        :nth-child(3) {
+            rotate: 225deg;
+            translate: 0 -1.7rem;
+        }
+    }
+}
+
+.burger-nav {
+    translate: 0 1.5rem;
+    opacity: 1;
+    visibility: visible;
+    transition: .3s ease-in-out;
+
+    &.translate100 {
+        translate: -100% 1.5rem;
+    }
+
+    @include respond ($bp-large) {
+        translate: 0 0;
+
+        &.translate100 {
+            translate: 100% 0;
+        }
+    }
+}
+
+.d-none {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.burger-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    list-style: none;
+    font-size: 2.5rem;
+
+    @include respond ($bp-large) {
+        flex-direction: row;
+    }
+    
+    &__item {
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
 }
