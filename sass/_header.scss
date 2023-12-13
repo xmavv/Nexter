@@ -8,6 +8,10 @@
     padding: 8rem;
     padding-top: 4rem;
 
+    @include respond($bp-large) {
+        margin-top: 6rem;
+    }
+
     display: grid;
     grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
     grid-template-columns: minmax(min-content, max-content);

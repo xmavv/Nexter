@@ -29,10 +29,10 @@ body {
   @media only screen and (max-width: 62.5em) {
     .container {
       grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
-      grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content); } }
+      grid-template-rows: 80vh min-content 40vw repeat(3, min-content); } }
   @media only screen and (max-width: 50em) {
     .container {
-      grid-template-rows: 6rem calc(100vh - 6rem); } }
+      grid-template-rows: 100vh; } }
 
 .heading-1, .heading-2, .heading-3, .heading-4 {
   font-family: "Josefin Sans", sans-serif;
@@ -90,25 +90,6 @@ body {
 .mb-hg {
   margin-bottom: 8rem; }
 
-.wide-box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(1rem);
-  z-index: 9999; }
-
-.wide {
-  position: relative;
-  width: 50vw !important;
-  height: auto !important;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: 10000; }
-
 .header {
   background-color: #101d2c;
   grid-column: full-start / col-end 6;
@@ -122,6 +103,9 @@ body {
   grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: 1.5rem;
   justify-content: center; }
+  @media only screen and (max-width: 62.5em) {
+    .header {
+      margin-top: 6rem; } }
   @media only screen and (max-width: 50em) {
     .header {
       grid-column: 1 / -1; } }
@@ -194,10 +178,10 @@ body {
 
 .features {
   grid-column: center-start / center-end;
-  margin: 15rem 0; }
+  padding: 15rem 0; }
   @media only screen and (max-width: 50em) {
     .features {
-      margin: 10rem 0; } }
+      padding: 10rem 0; } }
   @supports (display: grid) {
     .features {
       display: grid;
@@ -400,9 +384,31 @@ body {
   .gallery__img {
     height: 100%;
     width: 100%;
+    translate: 0 0;
+    top: 10%;
+    left: 10%;
     object-fit: cover;
     display: block;
     transition: all .3s ease; }
+
+.wide-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1rem);
+  z-index: 9999; }
+
+.wide {
+  position: relative;
+  width: 50vw;
+  height: auto;
+  translate: -50% -50%;
+  top: 50%;
+  left: 50%;
+  z-index: 10000; }
 
 .footer {
   background-color: #101d2c;
@@ -442,28 +448,40 @@ body {
   grid-row: 1 / -1;
   z-index: 500;
   width: 100%;
-  transition: .3s width ease-in-out;
+  transition: .3s ease-in-out;
   padding-top: 2rem;
-  position: relative; }
+  border-bottom: 1px solid #B28451; }
   @media only screen and (max-width: 62.5em) {
     .sidebar {
-      grid-column: 1 / -1;
-      grid-row: 1 / 2;
+      position: fixed;
       justify-content: flex-end;
       align-items: center;
       padding: 0; } }
-
-.increaseWidth {
-  width: 400%; }
+  @media only screen and (max-width: 37.5em) {
+    .sidebar {
+      height: 6.5rem;
+      padding: .1rem; } }
 
 .sidebar-container {
   display: flex;
   align-items: start;
-  position: fixed; }
+  position: fixed;
+  transition: .3s all ease-in-out; }
   @media only screen and (max-width: 62.5em) {
     .sidebar-container {
       position: relative;
       align-items: center; } }
+  @media only screen and (max-width: 37.5em) {
+    .sidebar-container {
+      align-items: start;
+      background-color: transparent;
+      height: 100vh; } }
+
+.increaseWidth {
+  width: 500%; }
+
+.changeBgc {
+  background-color: #c69963; }
 
 .burger {
   background-color: transparent;
@@ -472,7 +490,11 @@ body {
   cursor: pointer;
   margin-right: 3rem;
   display: block;
-  position: relative; }
+  position: relative;
+  transform: scale(1);
+  transition: .2s ease-in-out; }
+  .burger:hover {
+    transform: scale(0.85); }
   .burger :first-child {
     rotate: 30deg;
     translate: 0 .6rem; }
@@ -511,6 +533,13 @@ body {
       translate: 0 0; }
       .burger-nav.translate100 {
         translate: 100% 0; } }
+  @media only screen and (max-width: 37.5em) {
+    .burger-nav {
+      position: relative;
+      align-self: center;
+      justify-self: center; }
+      .burger-nav.translate100 {
+        translate: -100% 0rem; } }
 
 .d-none {
   opacity: 0;
@@ -525,6 +554,12 @@ body {
   @media only screen and (max-width: 62.5em) {
     .burger-list {
       flex-direction: row; } }
+  @media only screen and (max-width: 37.5em) {
+    .burger-list {
+      flex-direction: column;
+      font-size: 3rem;
+      gap: 8rem; } }
   .burger-list__item a {
     text-decoration: none;
-    color: #fff; }
+    color: #fff;
+    width: 100%; }

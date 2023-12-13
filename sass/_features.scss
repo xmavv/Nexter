@@ -1,7 +1,7 @@
 .features {
     grid-column: center-start / center-end;
 
-    margin: 15rem 0;
+    padding: 15rem 0;
 
     // display: grid;
 
@@ -18,7 +18,7 @@
     // a auto to jest min-content normalnie nie
 
     @include respond($bp-medium) {
-        margin: 10rem 0;
+        padding: 10rem 0;
     }
 
     @supports(display: grid) {
